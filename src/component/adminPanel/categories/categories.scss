@@ -1,0 +1,57 @@
+.panel-categories {
+  background-color: white;
+  width: 80vw;
+  align-items: center;
+  color: #1f1f38;
+
+  .category-header{
+    display: flex;
+    padding: 0.5rem 1rem;
+    justify-content: space-between;
+    button{
+      background-color: transparent;
+      font-size: 2rem;
+      color: #8d8787;
+    }
+  }
+
+  tr {
+
+    th {
+      width: 200px;
+      text-align: center;
+    }
+
+    th:first-child {
+      width: 20px;
+    }
+
+    td {
+      padding: 0;
+      width: 200px;
+      text-align: center;
+
+      img {
+        width: 30%;
+      }
+
+      .actions {
+        height: 42px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 2rem;
+
+        button {
+          color: #5e5e5e;
+          background-color: white;
+        }
+
+        button:hover {
+          transition: 0.5s;
+          transform: scale(1.2);
+        }
+      }
+    }
+  }
+}

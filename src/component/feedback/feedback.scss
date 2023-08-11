@@ -1,0 +1,108 @@
+.feedback {
+  border: 1px solid var(--border-color);
+  padding: 2rem 1rem;
+  border-radius:10px;
+  margin: 2rem 0;
+
+
+  .give-feedback {
+
+    .feedback-header {
+      color: var(--color-bg);
+      font-size: 1.5rem;
+    }
+
+    .feedback-body {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+
+      .textError {
+        padding: 1rem;
+        border-radius: 10px;
+        border:1px solid red;
+        color: red;
+        margin: 0 3rem;
+        font-size: 13px;
+      }
+
+      .textSuccess {
+        padding: 1rem;
+        border-radius: 10px;
+        border:1px solid green;
+        font-size: 13px;
+        margin: 0 3rem;
+        color: green;
+      }
+
+      label {
+        margin: 0 1rem;
+      }
+
+      input {
+        padding: 0.8rem;
+        border-radius: 10px;
+        border: 1px solid var(--border-color);
+        background: white;
+        color: var(--color-primary);
+      }
+
+      .grade {
+        margin: 0 1.5rem;
+
+        .rating {
+          direction: rtl;
+          display: flex;
+          justify-content: flex-end;
+
+          input {
+            display: none;
+          }
+
+          label {
+            display: block;
+            cursor: pointer;
+            width: 1.5rem;
+          }
+
+          label:after {
+            content: '★';
+            display: block;
+            font-size: 1.5rem;
+            color: gray;
+          }
+
+          label:hover:after,
+          label:hover ~ label:after,
+          input:checked ~ label:after {
+            color: #4db5ff;
+          }
+        }
+      }
+
+      .captcha {
+        font-size: 13px;
+        padding: 0 1.5rem;
+        display: flex;
+        gap: 1rem;
+      }
+
+      button {
+        width: 250px;
+        padding: 1rem 0;
+        border-radius: 10px;
+        border: 1px solid var(--color-primary);
+        background: var(--color-primary);
+        color: black;
+        margin-left: auto;
+      }
+
+      button:hover {
+        transition: 0.5s;
+        background: white;
+        color: var(--color-primary);
+      }
+
+    }
+  }
+}

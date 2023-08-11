@@ -1,0 +1,11 @@
+footer{
+  width: 100vw;
+  font-size:13px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding:1rem 1rem 1rem 200px;
+  position: static;
+  bottom:0;
+  background: var(--color-bg);
+}

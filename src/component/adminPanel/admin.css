@@ -1,0 +1,92 @@
+.panel {
+  display: flex;
+  background-color: #f6f3ef;
+  flex-wrap: wrap;
+  box-sizing: border-box;
+  justify-content: flex-end; }
+  .panel .panel-menu {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+    left: 0;
+    position: fixed;
+    width: 17vw;
+    background: #363740; }
+    .panel .panel-menu .panel-header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: .5rem;
+      padding: 2rem 1rem;
+      text-align: center;
+      color: #b9a7a7; }
+      .panel .panel-menu .panel-header .panel-icon {
+        font-size: 2rem; }
+    .panel .panel-menu .panel-menu-item {
+      display: flex;
+      box-sizing: border-box;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 1rem;
+      text-decoration: none;
+      padding: 1rem 2rem;
+      width: 100%;
+      color: #A4A6B3; }
+      .panel .panel-menu .panel-menu-item a {
+        text-decoration: none;
+        color: #A4A6B3; }
+    .panel .panel-menu .panel-menu-item:hover {
+      background-color: rgba(164, 166, 179, 0.15);
+      color: #ffffff;
+      transition: 0.5s; }
+      .panel .panel-menu .panel-menu-item:hover a {
+        color: #ffffff; }
+    .panel .panel-menu .panel-menu-item.active {
+      background-color: rgba(164, 166, 179, 0.11);
+      border-left: 5px solid #ffffff;
+      color: #ffffff;
+      transition: 0.5s; }
+      .panel .panel-menu .panel-menu-item.active a {
+        color: #ffffff; }
+  .panel .panel-right {
+    display: flex;
+    flex-direction: column;
+    align-items: center; }
+    .panel .panel-right .panel-nav {
+      background-color: white;
+      width: 80vw;
+      height: 60px;
+      color: black;
+      display: flex;
+      justify-content: space-around;
+      border: 1px solid #e7e6e6;
+      border-radius: 10px;
+      align-items: center;
+      margin: 1rem; }
+      .panel .panel-right .panel-nav .panel-name {
+        font-size: 20px;
+        font-weight: 500;
+        font-style: inherit; }
+      .panel .panel-right .panel-nav .admin {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem; }
+        .panel .panel-right .panel-nav .admin div {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+          border: 1px solid #b6b6b6; }
+      .panel .panel-right .panel-nav .panel-search {
+        width: 400px;
+        display: flex;
+        justify-content: space-between;
+        border: 1px solid #e7e6e6;
+        overflow: hidden;
+        border-radius: 5px;
+        padding: 5px; }
+
+/*# sourceMappingURL=admin.css.map */

@@ -1,0 +1,156 @@
+.category-modal {
+  background: #363740;
+  width: 23vw;
+  border-radius: 5px;
+  padding: 0.5rem 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: Arial, sans-serif; }
+  .category-modal .photo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 200px;
+    height: 200px;
+    overflow: hidden;
+    margin-bottom: 10px;
+    gap: 10px; }
+    .category-modal .photo img {
+      width: 80%;
+      border-radius: 10px; }
+  .category-modal input {
+    width: 300px;
+    background-color: #5e5e5e;
+    color: white;
+    padding: 0.6rem;
+    border-radius: 5px; }
+  .category-modal div {
+    display: flex;
+    gap: 1rem; }
+    .category-modal div button {
+      background-color: #5e5e5e;
+      color: white; }
+  .category-modal .input {
+    gap: 0;
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
+    margin-top: 15px; }
+    .category-modal .input .category-label {
+      color: white;
+      position: absolute;
+      font-size: 14px;
+      top: -20px;
+      left: 11px; }
+  .category-modal .names {
+    width: 300px;
+    background-color: #989494;
+    color: #e1e1e1;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin: 2px;
+    overflow: scroll;
+    max-height: 100px; }
+    .category-modal .names div {
+      width: 300px;
+      border-bottom: 1px solid var(--border-color);
+      padding: 0 15px;
+      transition: 0.5s; }
+    .category-modal .names div:hover {
+      background-color: white;
+      color: #1f1f38; }
+
+.loading {
+  font-size: 1.5rem;
+  animation: turnAround 0.5s infinite; }
+
+.modal-content {
+  width: 23vw;
+  margin: auto; }
+
+@keyframes turnAround {
+  0% {
+    transform: rotate(0deg); }
+  25% {
+    transform: rotate(90deg); }
+  50% {
+    transform: rotate(180deg); }
+  75% {
+    transform: rotate(270deg); }
+  100% {
+    transform: rotate(360deg); } }
+.product-modal {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  padding: 1rem;
+  gap: 0.5rem;
+  width: 30vw;
+  background-color: #363535; }
+  .product-modal .photo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    gap: 0.5rem; }
+    .product-modal .photo img {
+      border-radius: 20px;
+      width: 50%; }
+  .product-modal .input {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    position: relative; }
+    .product-modal .input input, .product-modal .input textarea, .product-modal .input select {
+      padding: 0.4rem;
+      border-radius: 5px;
+      background-color: #5e5e5e;
+      color: #4db5ff; }
+    .product-modal .input input:focus, .product-modal .input textarea:focus, .product-modal .input select:focus {
+      border: 2px solid #4db5ff;
+      background-color: #3d3a3a; }
+    .product-modal .input .names {
+      position: absolute;
+      z-index: 2;
+      top: 65px;
+      width: 100%;
+      color: white;
+      background-color: #ada9a9;
+      border: 2px solid #4db5ff;
+      border-radius: 0 0 5px 5px;
+      overflow: hidden; }
+      .product-modal .input .names .names-item {
+        padding: 0 0.5rem; }
+      .product-modal .input .names .names-item:hover {
+        background-color: #3d3a3a; }
+      .product-modal .input .names .names-item:active {
+        transform: scaleY(1.1); }
+  .product-modal .price {
+    width: 150px; }
+  .product-modal .select {
+    font-size: 15px;
+    font-family: Arial, sans-serif; }
+    .product-modal .select select {
+      width: 100px; }
+  .product-modal .buttons {
+    width: 100%;
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    align-items: center; }
+    .product-modal .buttons .btn {
+      transition: 0.5s;
+      border: 1px solid #4db5ff;
+      color: #4db5ff; }
+    .product-modal .buttons .btn:hover {
+      border: 1px solid white;
+      color: white; }
+    .product-modal .buttons .btn:active {
+      transform: scale(0.7); }
+
+/*# sourceMappingURL=modals.css.map */

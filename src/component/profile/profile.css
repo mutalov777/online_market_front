@@ -1,0 +1,123 @@
+.profile {
+  padding: 3rem 1rem;
+  display: flex;
+  flex-direction: column; }
+  .profile .profile-header {
+    color: #1f1f38; }
+  .profile .profile-body {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    gap: 1rem;
+    color: #1f1f38; }
+    .profile .profile-body .profile-menu {
+      border-radius: 10px;
+      display: flex;
+      padding: 1rem;
+      flex-direction: column;
+      align-items: flex-start;
+      box-shadow: 1px 1px 7px 0.5px var(--color-primary);
+      -webkit-box-shadow: 1px 1px 7px 0.5px var(--color-primary);
+      -moz-box-shadow: 1px 1px 7px 0.5px var(--color-primary); }
+      .profile .profile-body .profile-menu form {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        padding: 1rem; }
+        .profile .profile-body .profile-menu form div {
+          width: 100%;
+          height: 60px;
+          overflow: hidden;
+          border: 1px solid var(--border-color);
+          border-radius: 10px;
+          display: flex;
+          align-items: center; }
+          .profile .profile-body .profile-menu form div input {
+            background-color: white;
+            padding: 0.5rem;
+            height: 100%;
+            width: 80%; }
+          .profile .profile-body .profile-menu form div button {
+            border: none;
+            width: 20%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: transparent; }
+            .profile .profile-body .profile-menu form div button .show-icon {
+              font-size: 1rem;
+              color: #9f9a9a; }
+        .profile .profile-body .profile-menu form .error {
+          background-color: #d79e9e;
+          border: 2px solid red;
+          box-shadow: 1px 1px 7px 0.5px red;
+          -webkit-box-shadow: 1px 1px 7px 0.5px red;
+          -moz-box-shadow: 1px 1px 7px 0.5px red; }
+        .profile .profile-body .profile-menu form div:has(> input:focus) {
+          border: 1px solid #4db5ff;
+          box-shadow: 1px 1px 7px 0.5px var(--color-primary);
+          -webkit-box-shadow: 1px 1px 7px 0.5px var(--color-primary);
+          -moz-box-shadow: 1px 1px 7px 0.5px var(--color-primary); }
+        .profile .profile-body .profile-menu form small {
+          font-size: 14px;
+          margin: 0; }
+        .profile .profile-body .profile-menu form button {
+          width: 100%;
+          border-radius: 10px;
+          margin: 20px auto;
+          padding: 1rem;
+          background-color: #4db5ff;
+          border: 1px solid #4db5ff;
+          color: white;
+          transition: 0.5s; }
+        .profile .profile-body .profile-menu form button:hover {
+          background-color: white;
+          color: #4db5ff; }
+    .profile .profile-body .profile-data {
+      padding: 1rem;
+      border-radius: 10px;
+      box-shadow: 1px 1px 7px 0.5px var(--color-primary);
+      -webkit-box-shadow: 1px 1px 7px 0.5px var(--color-primary);
+      -moz-box-shadow: 1px 1px 7px 0.5px var(--color-primary); }
+      .profile .profile-body .profile-data form {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        padding: 0 1rem; }
+        .profile .profile-body .profile-data form input {
+          padding: 1rem;
+          border-radius: 10px;
+          border: 1px solid var(--border-color); }
+        .profile .profile-body .profile-data form input:focus {
+          border: 1px solid #4db5ff;
+          box-shadow: 1px 1px 7px 0.5px var(--color-primary);
+          -webkit-box-shadow: 1px 1px 7px 0.5px var(--color-primary);
+          -moz-box-shadow: 1px 1px 7px 0.5px var(--color-primary); }
+        .profile .profile-body .profile-data form div {
+          display: flex;
+          align-items: center;
+          justify-content: space-around; }
+          .profile .profile-body .profile-data form div .birthday {
+            display: flex;
+            flex-direction: column;
+            align-items: start; }
+          .profile .profile-body .profile-data form div .gender {
+            display: flex;
+            flex-direction: column;
+            align-items: start; }
+            .profile .profile-body .profile-data form div .gender .gender-radio {
+              display: flex;
+              justify-content: flex-start; }
+              .profile .profile-body .profile-data form div .gender .gender-radio label {
+                font-size: 13px; }
+        .profile .profile-body .profile-data form button {
+          padding: 1rem;
+          border: 1px solid #4db5ff;
+          background: var(--color-primary);
+          color: white;
+          border-radius: 10px; }
+        .profile .profile-body .profile-data form button:hover {
+          background-color: white;
+          color: #4db5ff; }
+
+/*# sourceMappingURL=profile.css.map */

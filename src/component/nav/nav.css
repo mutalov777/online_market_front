@@ -1,0 +1,38 @@
+.MiniNav nav {
+    background: rgba(0, 0, 0, 0.2);
+    width: max-content;
+    padding: 0.7rem 0.5rem;
+    z-index: 2;
+    position: fixed;
+    right: -1%;
+    transform: translateX(-30%);
+    bottom: 24%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    border-radius: 1rem;
+    backdrop-filter: blur(15px);
+}
+
+.MiniNav  a {
+    background: transparent;
+    padding: 0.9rem;
+    border-radius: 50%;
+    display: flex;
+    color: var(--color-white);
+    font-size: 1.1rem;
+}
+
+.MiniNav .tooltip {
+    padding: 0.4rem;
+    z-index: 4;
+}
+
+.MiniNav nav a:hover {
+    background: rgba(0, 0, 0, 0.3);
+}
+
+.MiniNav nav a.active {
+    background: var(--color-primary);
+    color: var(--color-bg);
+}

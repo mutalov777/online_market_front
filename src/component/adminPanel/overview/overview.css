@@ -1,0 +1,70 @@
+.overview {
+  width: 80vw; }
+  .overview .info {
+    width: 80vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 1rem;
+    box-sizing: border-box; }
+    .overview .info .info-item {
+      width: 23%;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      padding: 1rem;
+      align-items: center;
+      background-color: white;
+      border: 1px solid #e7e6e6;
+      border-radius: 10px; }
+      .overview .info .info-item h6 {
+        color: #b9a7a7; }
+      .overview .info .info-item h3 {
+        color: #3d3a3a; }
+  .overview .diagram {
+    display: flex;
+    margin: 1rem;
+    color: #252733;
+    background-color: white; }
+    .overview .diagram .diagram-card {
+      padding: 1rem; }
+      .overview .diagram .diagram-card .diagram-header {
+        display: flex;
+        justify-content: space-between; }
+        .overview .diagram .diagram-card .diagram-header p {
+          font-size: 13px;
+          color: #9FA2B4; }
+      .overview .diagram .diagram-card .legend {
+        display: flex;
+        flex-direction: column; }
+        .overview .diagram .diagram-card .legend div {
+          display: flex;
+          gap: 5px;
+          align-items: center;
+          justify-content: flex-start;
+          font-size: 15px; }
+          .overview .diagram .diagram-card .legend div span {
+            width: 20px;
+            height: 5px; }
+          .overview .diagram .diagram-card .legend div .order-line {
+            background-color: #8884d8; }
+          .overview .diagram .diagram-card .legend div .employer-line {
+            background-color: #696262; }
+    .overview .diagram .additional-info {
+      height: 50vh;
+      display: flex;
+      flex-direction: column;
+      align-self: center;
+      padding: 1rem;
+      gap: 1rem; }
+      .overview .diagram .additional-info .additional-info-item {
+        border: 1px solid #e7e6e6;
+        border-radius: 10px;
+        width: 400px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 1rem; }
+
+/*# sourceMappingURL=overview.css.map */

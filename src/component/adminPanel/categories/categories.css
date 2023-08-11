@@ -1,0 +1,38 @@
+.panel-categories {
+  background-color: white;
+  width: 80vw;
+  align-items: center;
+  color: #1f1f38; }
+  .panel-categories .category-header {
+    display: flex;
+    padding: 0.5rem 1rem;
+    justify-content: space-between; }
+    .panel-categories .category-header button {
+      background-color: transparent;
+      font-size: 2rem;
+      color: #8d8787; }
+  .panel-categories tr th {
+    width: 200px;
+    text-align: center; }
+  .panel-categories tr th:first-child {
+    width: 20px; }
+  .panel-categories tr td {
+    padding: 0;
+    width: 200px;
+    text-align: center; }
+    .panel-categories tr td img {
+      width: 30%; }
+    .panel-categories tr td .actions {
+      height: 42px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem; }
+      .panel-categories tr td .actions button {
+        color: #5e5e5e;
+        background-color: white; }
+      .panel-categories tr td .actions button:hover {
+        transition: 0.5s;
+        transform: scale(1.2); }
+
+/*# sourceMappingURL=categories.css.map */

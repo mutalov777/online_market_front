@@ -1,0 +1,57 @@
+.orders {
+  width: 80vw;
+  background-color: white;
+  color: #1f1f38; }
+  .orders .orders-header {
+    padding: 1rem; }
+    .orders .orders-header button {
+      font-size: 20px;
+      background-color: transparent; }
+    .orders .orders-header button:active {
+      transition: 0.5s;
+      transform: rotate(360deg); }
+  .orders tr {
+    position: relative;
+    box-sizing: border-box; }
+    .orders tr td, .orders tr th {
+      border: 1px solid var(--border-color);
+      text-align: center;
+      align-items: center;
+      color: #5e5e5e;
+      padding: 0;
+      font-size: 14px; }
+  .orders tr:hover {
+    transition: 0.5s;
+    box-shadow: 1px 1px 10px #4db5ff; }
+  .orders tr:active {
+    transform: translateY(10px); }
+  .orders .owner {
+    font-size: 13px; }
+    .orders .owner p {
+      font-size: 15px;
+      color: green;
+      text-decoration: underline; }
+  .orders .actions {
+    width: 100%;
+    display: block; }
+    .orders .actions button {
+      margin: 0.5rem 0;
+      padding: 0.3rem;
+      border-radius: 10px;
+      background-color: white; }
+    .orders .actions .not-delivered {
+      border: 1px solid red;
+      color: red; }
+    .orders .actions .delivered {
+      border: 1px solid green;
+      color: green; }
+  .orders .product {
+    padding: 0 0.5rem;
+    color: #5e5e5e;
+    transition: 1s;
+    max-height: 100px;
+    overflow: scroll;
+    display: flex;
+    justify-content: space-between; }
+
+/*# sourceMappingURL=orders.css.map */

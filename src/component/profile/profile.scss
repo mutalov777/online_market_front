@@ -1,0 +1,166 @@
+.profile {
+  padding: 3rem 1rem;
+  display: flex;
+  flex-direction: column;
+
+  .profile-header {
+    color: #1f1f38;
+  }
+
+  .profile-body {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    gap: 1rem;
+    color: #1f1f38;
+
+    .profile-menu {
+      border-radius: 10px;
+      display: flex;
+      padding: 1rem;
+      flex-direction: column;
+      align-items: flex-start;
+      box-shadow: 1px 1px 7px 0.5px var(--color-primary);
+      -webkit-box-shadow: 1px 1px 7px 0.5px var(--color-primary);
+      -moz-box-shadow: 1px 1px 7px 0.5px var(--color-primary);
+
+      form {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        padding: 1rem;
+
+        div {
+          width: 100%;
+          height: 60px;
+          overflow: hidden;
+          border: 1px solid var(--border-color);
+          border-radius: 10px;
+          display: flex;
+          align-items: center;
+          input{
+            background-color: white;
+            padding: 0.5rem;
+            height: 100%;
+            width: 80%;
+          }
+          button{
+            border: none;
+            width: 20%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: transparent;
+            .show-icon{
+              font-size: 1rem;
+              color: #9f9a9a;
+            }
+          }
+        }
+        .error{
+          background-color: #d79e9e;
+          border: 2px solid red;
+          box-shadow: 1px 1px 7px 0.5px red;
+          -webkit-box-shadow: 1px 1px 7px 0.5px red;
+          -moz-box-shadow: 1px 1px 7px 0.5px red;
+        }
+
+        div:has(> input:focus){
+          border: 1px solid #4db5ff;
+          box-shadow: 1px 1px 7px 0.5px var(--color-primary);
+          -webkit-box-shadow: 1px 1px 7px 0.5px var(--color-primary);
+          -moz-box-shadow: 1px 1px 7px 0.5px var(--color-primary);
+        }
+
+        small {
+          font-size: 14px;
+          margin: 0;
+        }
+
+        button {
+          width: 100%;
+          border-radius: 10px;
+          margin: 20px auto;
+          padding: 1rem;
+          background-color: #4db5ff;
+          border: 1px solid #4db5ff;
+          color: white;
+          transition: 0.5s;
+        }
+
+        button:hover {
+          background-color: white;
+          color: #4db5ff;
+        }
+      }
+    }
+
+    .profile-data {
+      padding: 1rem;
+      border-radius: 10px;
+      box-shadow: 1px 1px 7px 0.5px var(--color-primary);
+      -webkit-box-shadow: 1px 1px 7px 0.5px var(--color-primary);
+      -moz-box-shadow: 1px 1px 7px 0.5px var(--color-primary);
+
+      form {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        padding: 0 1rem;
+
+        input {
+          padding: 1rem;
+          border-radius: 10px;
+          border: 1px solid var(--border-color);
+        }
+
+        input:focus {
+          border: 1px solid #4db5ff;
+          box-shadow: 1px 1px 7px 0.5px var(--color-primary);
+          -webkit-box-shadow: 1px 1px 7px 0.5px var(--color-primary);
+          -moz-box-shadow: 1px 1px 7px 0.5px var(--color-primary);
+        }
+
+        div {
+          display: flex;
+          align-items: center;
+          justify-content: space-around;
+
+          .birthday {
+            display: flex;
+            flex-direction: column;
+            align-items: start;
+          }
+
+          .gender {
+            display: flex;
+            flex-direction: column;
+            align-items: start;
+
+            .gender-radio {
+              display: flex;
+              justify-content: flex-start;
+
+              label {
+                font-size: 13px;
+              }
+            }
+          }
+        }
+
+        button {
+          padding: 1rem;
+          border: 1px solid #4db5ff;
+          background: var(--color-primary);
+          color: white;
+          border-radius: 10px;
+        }
+
+        button:hover {
+          background-color: white;
+          color: #4db5ff;
+        }
+      }
+    }
+  }
+}

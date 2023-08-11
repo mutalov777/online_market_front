@@ -1,0 +1,75 @@
+@charset "UTF-8";
+.feedback {
+  border: 1px solid var(--border-color);
+  padding: 2rem 1rem;
+  border-radius: 10px;
+  margin: 2rem 0; }
+  .feedback .give-feedback .feedback-header {
+    color: var(--color-bg);
+    font-size: 1.5rem; }
+  .feedback .give-feedback .feedback-body {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem; }
+    .feedback .give-feedback .feedback-body .textError {
+      padding: 1rem;
+      border-radius: 10px;
+      border: 1px solid red;
+      color: red;
+      margin: 0 3rem;
+      font-size: 13px; }
+    .feedback .give-feedback .feedback-body .textSuccess {
+      padding: 1rem;
+      border-radius: 10px;
+      border: 1px solid green;
+      font-size: 13px;
+      margin: 0 3rem;
+      color: green; }
+    .feedback .give-feedback .feedback-body label {
+      margin: 0 1rem; }
+    .feedback .give-feedback .feedback-body input {
+      padding: 0.8rem;
+      border-radius: 10px;
+      border: 1px solid var(--border-color);
+      background: white;
+      color: var(--color-primary); }
+    .feedback .give-feedback .feedback-body .grade {
+      margin: 0 1.5rem; }
+      .feedback .give-feedback .feedback-body .grade .rating {
+        direction: rtl;
+        display: flex;
+        justify-content: flex-end; }
+        .feedback .give-feedback .feedback-body .grade .rating input {
+          display: none; }
+        .feedback .give-feedback .feedback-body .grade .rating label {
+          display: block;
+          cursor: pointer;
+          width: 1.5rem; }
+        .feedback .give-feedback .feedback-body .grade .rating label:after {
+          content: '★';
+          display: block;
+          font-size: 1.5rem;
+          color: gray; }
+        .feedback .give-feedback .feedback-body .grade .rating label:hover:after,
+        .feedback .give-feedback .feedback-body .grade .rating label:hover ~ label:after,
+        .feedback .give-feedback .feedback-body .grade .rating input:checked ~ label:after {
+          color: #4db5ff; }
+    .feedback .give-feedback .feedback-body .captcha {
+      font-size: 13px;
+      padding: 0 1.5rem;
+      display: flex;
+      gap: 1rem; }
+    .feedback .give-feedback .feedback-body button {
+      width: 250px;
+      padding: 1rem 0;
+      border-radius: 10px;
+      border: 1px solid var(--color-primary);
+      background: var(--color-primary);
+      color: black;
+      margin-left: auto; }
+    .feedback .give-feedback .feedback-body button:hover {
+      transition: 0.5s;
+      background: white;
+      color: var(--color-primary); }
+
+/*# sourceMappingURL=feedback.css.map */
