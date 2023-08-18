@@ -227,6 +227,5 @@ export const deleteProduct = createAsyncThunk(
         }
     }
 )
-export const {} = ProductSlice.actions
 
 

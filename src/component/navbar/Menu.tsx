@@ -62,7 +62,7 @@ function Menu() {
                                 src="https://cdn.britannica.com/42/3842-004-F47B77BC/Flag-Russia.jpg" alt=""/></div>
                         </div>
                         <div className="account">
-                            {(JSON.stringify(user) === '{}') ? <Link to={'/login'} className={'login'}>Login</Link> :
+                            {(JSON.stringify(user) === '{}') ? <Link to={'/auth'} className={'login'}>Login</Link> :
                                 <Dropdown className={'account-dropdown'} isOpen={dropdownOpen} toggle={toggle}>
                                     <DropdownToggle className={'account-dropdown-toggle'} caret>
                                         <div>

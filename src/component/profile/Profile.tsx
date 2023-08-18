@@ -30,7 +30,7 @@ function Profile() {
         setFullName(user.fullName)
         setPhone(user?.phone)
         setEmail(user.email)
-    }, [])
+    })
 
     function handleChangePassword(e: any) {
         e.preventDefault()
@@ -62,7 +62,7 @@ function Profile() {
     function handleProfile(e: any) {
         e.preventDefault()
         if (user) {
-            if (fullName !== '' && email != '' && phone) {
+            if (fullName !== '' && email !== '' && phone) {
                 let data: AuthUserUpdateDTO = {
                     id: user?.id,
                     fullName,

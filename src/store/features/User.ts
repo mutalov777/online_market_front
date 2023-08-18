@@ -1,10 +1,25 @@
 import {ActionReducerMapBuilder, createAsyncThunk, createSlice, PayloadAction} from "@reduxjs/toolkit";
 import {CartDTO} from "./Product";
-import {axiosInstance as axios} from "../store";
+import {axiosInstance as axios, BaseURL} from "../store";
 import {toast} from "react-toastify";
-import {BaseURL} from "../store";
 import {MessageShortDTO} from "./Message";
 
+import {Configuration, FrontendApi} from "@ory/kratos-client";
+
+export const Config = {
+    auth: {
+        publicURL:
+            process.env.REACT_APP_KRATOS_PUBLIC_URL || "https://boring-bardeen-9f6z40klwv.projects.oryapis.com"
+    }
+};
+export const ory = new FrontendApi(
+    new Configuration({
+        basePath: Config.auth.publicURL,
+        baseOptions: {
+            withCredentials: false
+        }
+    })
+);
 
 export interface AuthUserDTO {
     id: number,
@@ -43,7 +58,7 @@ export interface LoginDTO {
 }
 
 export interface SessionDTO {
-    user:AuthUserDTO,
+    user: AuthUserDTO,
     accessTokenExpiry: number,
 
     refreshTokenExpiry: number,
@@ -62,7 +77,7 @@ interface UserState {
     onlineUsers: MessageShortDTO[]
     isLoading: boolean
     refresh: boolean,
-    totalCount:number
+    totalCount: number
 }
 
 export interface CartCreateDTO {
@@ -84,7 +99,7 @@ const userState: UserState = {
     token: {} as SessionDTO,
     isLoading: false,
     refresh: false,
-    totalCount:0
+    totalCount: 0
 }
 
 
@@ -98,7 +113,7 @@ export const UserSlice = createSlice({
         },
         setToken: (state, action: PayloadAction<SessionDTO>) => {
             state.token = action.payload
-            state.user=action.payload.user
+            state.user = action.payload.user
         }
     },
     extraReducers: (builder: ActionReducerMapBuilder<UserState>) => {
@@ -135,7 +150,7 @@ export const UserSlice = createSlice({
         builder.addCase(getAllUser.fulfilled, (state, action) => {
             if (action.payload.data.success) {
                 state.users = action.payload.data.data
-                state.totalCount=action.payload.data.totalCount
+                state.totalCount = action.payload.data.totalCount
             }
         })
 
