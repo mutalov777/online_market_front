@@ -5,7 +5,7 @@
   "dependencies": {
     "@emailjs/browser": "^3.10.0",
     "@ory/client": "^1.1.49",
-    "@ory/kratos-client": "^0.13.1",
+    "@ory/kratos-client": "^0.5.4-alpha.1",
     "@reduxjs/toolkit": "^1.9.1",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
