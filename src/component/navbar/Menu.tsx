@@ -1,31 +1,38 @@
 import React, {useEffect, useState} from 'react';
 import {BsTelephoneFill} from 'react-icons/bs'
-import {IoCartOutline} from 'react-icons/io5'
 import {AiOutlineSearch} from 'react-icons/ai'
 import {FaUserAlt} from 'react-icons/fa'
 import {Dropdown, DropdownItem, DropdownMenu, DropdownToggle,} from 'reactstrap';
 import {Link, useNavigate} from "react-router-dom";
 import {useAppDispatch, useAppSelector} from "../../store/store";
-import {clearUser, getUser} from "../../store/features/User";
+import {ory, setLogoutUrl, setSession} from "../../store/features/User";
 import {getProducts} from "../../store/features/Product";
 import {useTranslation} from "react-i18next";
 import nav from "../nav/Nav";
+import {toast} from "react-toastify";
+import {Identity} from "@ory/kratos-client";
+import {redirectToSelfService} from "../../util";
 
 
 function Menu() {
-    const {user, token} = useAppSelector(({user: {user, token}}) => ({token, user}))
-    const userRole = useAppSelector(({user: {user}}) => user.role)
+    const {session, logoutUrl} = useAppSelector(({user: {session, logoutUrl}}) => ({session, logoutUrl}))
     const dispatch = useAppDispatch();
     const navigate = useNavigate()
     const [dropdownOpen, setDropdownOpen] = useState(false);
     const [language, setLanguage] = useState('uz');
-    const {t,i18n} = useTranslation()
+    const {t, i18n} = useTranslation()
 
     useEffect(() => {
-            if (JSON.stringify(user) !== '{}' && JSON.stringify(token) !== '{}')
-                dispatch(getUser({token: token.accessToken, id: user.id}))
+            ory.toSession().then(({data}) => {
+                dispatch(setSession(data))
+                ory.createBrowserLogoutFlow().then(({data}) => {
+                    dispatch(setLogoutUrl(data.logout_url))
+                })
+            }).catch(err => {
+                toast.error(err)
+            })
         }
-        , [token])
+        , [])
 
     function toggle() {
         setDropdownOpen(!dropdownOpen)
@@ -42,6 +49,15 @@ function Menu() {
         setLanguage(lan)
         i18n.changeLanguage(lan).then(r => r)
     }
+    function loginUrl(){
+        redirectToSelfService("/ui/login")
+    }
+    function register(){
+        redirectToSelfService('/ui/registration')
+    }
+
+    const getUserName = (identity: Identity) =>
+        identity.traits.email || identity.traits.username
 
     return (
         <nav className={'menu'}>
@@ -62,27 +78,30 @@ function Menu() {
                                 src="https://cdn.britannica.com/42/3842-004-F47B77BC/Flag-Russia.jpg" alt=""/></div>
                         </div>
                         <div className="account">
-                            {(JSON.stringify(user) === '{}') ? <Link to={'/auth'} className={'login'}>Login</Link> :
+                            {(!session) ? <>
+                                    <button onClick={loginUrl}>Sign In</button>
+                                    <button onClick={register}>Sign Out</button>
+                                </>:
                                 <Dropdown className={'account-dropdown'} isOpen={dropdownOpen} toggle={toggle}>
                                     <DropdownToggle className={'account-dropdown-toggle'} caret>
                                         <div>
                                             <FaUserAlt/>
                                         </div>
-                                        {user?.fullName}
+                                        {getUserName(session.identity)}
                                     </DropdownToggle>
                                     <DropdownMenu className={'account-dropdown-menu'}>
                                         <DropdownItem className={'account-dropdown-item'}>
                                             <Link to={'/profile'}>{t("profile")}</Link>
                                         </DropdownItem>
-                                        {
-                                            userRole === 'ADMIN' ?
-                                                <DropdownItem className={'account-dropdown-item'}>
-                                                    <Link to={'admin-panel'}>{t("admin-panel")}</Link>
-                                                </DropdownItem> :
-                                                ''
-                                        }
+                                        {/*{*/}
+                                        {/*    userRole === 'ADMIN' ?*/}
+                                        {/*        <DropdownItem className={'account-dropdown-item'}>*/}
+                                        {/*            <Link to={'admin-panel'}>{t("admin-panel")}</Link>*/}
+                                        {/*        </DropdownItem> :*/}
+                                        {/*        ''*/}
+                                        {/*}*/}
                                         <DropdownItem className={'account-dropdown-item'}>
-                                            <Link to={'login'} onClick={() => dispatch(clearUser())}>{t("logout")}</Link>
+                                            <button onClick={()=>window.location.replace(logoutUrl?logoutUrl:"")}>{t("logout")}</button>
                                         </DropdownItem>
                                     </DropdownMenu>
                                 </Dropdown>
@@ -98,14 +117,10 @@ function Menu() {
                         </div>
                         <div className="search">
                             <form onSubmit={HandleSearch}>
-                                <input type="search" placeholder={''+t("search")}/>
+                                <input type="search" placeholder={'' + t("search")}/>
                                 <button aria-label={'search'} type="submit"><AiOutlineSearch/></button>
                             </form>
                         </div>
-                        <Link to={'/cart'} className={'box-bottom-icon'}>
-                            <div className={'count'}>{JSON.stringify(user) !== '{}' ? user.carts.length : 0}</div>
-                            <IoCartOutline className={'icon'}/>{t("cart")}
-                        </Link>
                     </div>
                 </div>
             </div>

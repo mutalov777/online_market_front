@@ -16,7 +16,8 @@ import PanelProducts from "./component/adminPanel/products/Products";
 import Support from "./component/adminPanel/support/Support";
 import Orders from "./component/adminPanel/order/Orders";
 import Error from "./component/error/404"
-import Auth from "./component/login/Auth";
+import Register from "./component/login/Register";
+import Login from "./component/login/Login";
 
 function App() {
     const userRole = useAppSelector(({user: {user}}) => user.role)
@@ -75,7 +76,8 @@ function App() {
                     <Route path={'/cart'} element={<Cart/>}/>
                     <Route path={'/feedback'} element={<div className={'col-md-6 offset-3'}><Feedback/></div>}/>
                 </Route>
-                <Route path={'auth'} element={<Auth/>}/>
+                <Route path={'auth/login'} element={<Login/>}/>
+                <Route path={'auth/register'} element={<Register/>}/>
                 {
                     userRole === 'ADMIN' ?
                         <Route path={'/admin-panel'} element={<AdminPanel/>}>

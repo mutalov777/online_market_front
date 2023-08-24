@@ -69,7 +69,6 @@ export const ProductSlice = createSlice({
     extraReducers: (builder: ActionReducerMapBuilder<ProductState>) => {
         builder.addCase(getProducts.fulfilled, (state, action) => {
             state.products = action.payload.data.data
-            console.log(action.payload.data.data)
             state.count = action.payload.data.totalCount
         })
 

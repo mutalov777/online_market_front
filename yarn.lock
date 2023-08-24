@@ -1539,6 +1539,13 @@
     "@nodelib/fs.scandir" "2.1.5"
     fastq "^1.6.0"
 
+"@ory/client@^1.1.49":
+  version "1.1.49"
+  resolved "https://registry.npmjs.org/@ory/client/-/client-1.1.49.tgz"
+  integrity sha512-mZHwI18gUzFLd9OkC9TUl2fH+9ETmitZzhU/BC84iViV/jssrT8SOBRHsGDj1IA3feDDKQsQuO9yMJjFIcKkYA==
+  dependencies:
+    axios "^0.21.4"
+
 "@ory/kratos-client@^0.13.1":
   version "0.13.1"
   resolved "https://registry.npmjs.org/@ory/kratos-client/-/kratos-client-0.13.1.tgz"
@@ -5365,8 +5372,15 @@ ignore@^5.2.0:
   resolved "https://registry.npmjs.org/ignore/-/ignore-5.2.4.tgz"
   integrity sha512-MAb38BcSbH0eHNBxn7ql2NH/kX33OkB3lZ1BNdh7ENeRChHTYsTvWrMubiIAMNS2llXEEgZ1MUOBtXChP3kaFQ==
 
-immer@^9.0.21, immer@^9.0.7:
+immer@^9.0.21:
   version "9.0.21"
+  resolved "https://registry.npmjs.org/immer/-/immer-9.0.21.tgz"
+  integrity sha512-bc4NBHqOqSfRW7POMkHd51LvClaeMXpm8dx0e8oE2GORbq5aRK7Bxl4FyzVLdGtLmvLKL7BTDBG5ACQm4HWjTA==
+
+immer@^9.0.7:
+  version "9.0.21"
+  resolved "https://registry.npmjs.org/immer/-/immer-9.0.21.tgz"
+  integrity sha512-bc4NBHqOqSfRW7POMkHd51LvClaeMXpm8dx0e8oE2GORbq5aRK7Bxl4FyzVLdGtLmvLKL7BTDBG5ACQm4HWjTA==
 
 immutable@^4.0.0:
   version "4.3.2"

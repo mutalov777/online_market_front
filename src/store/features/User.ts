@@ -5,18 +5,19 @@ import {toast} from "react-toastify";
 import {MessageShortDTO} from "./Message";
 
 import {Configuration, FrontendApi} from "@ory/kratos-client";
+import {Session} from "@ory/kratos-client";
 
 export const Config = {
     auth: {
         publicURL:
-            process.env.REACT_APP_KRATOS_PUBLIC_URL || "https://boring-bardeen-9f6z40klwv.projects.oryapis.com"
+            process.env.REACT_APP_KRATOS_PUBLIC_URL || "http://localhost:4000/.ory"
     }
 };
 export const ory = new FrontendApi(
     new Configuration({
         basePath: Config.auth.publicURL,
         baseOptions: {
-            withCredentials: false
+            withCredentials: true
         }
     })
 );
@@ -74,6 +75,8 @@ interface UserState {
     users: AuthUserDTO[]
     user: AuthUserDTO,
     token: SessionDTO,
+    session: Session | undefined,
+    logoutUrl: string | undefined
     onlineUsers: MessageShortDTO[]
     isLoading: boolean
     refresh: boolean,
@@ -97,6 +100,8 @@ const userState: UserState = {
     users: [],
     user: {} as AuthUserDTO,
     token: {} as SessionDTO,
+    session: undefined,
+    logoutUrl: undefined,
     isLoading: false,
     refresh: false,
     totalCount: 0
@@ -114,7 +119,14 @@ export const UserSlice = createSlice({
         setToken: (state, action: PayloadAction<SessionDTO>) => {
             state.token = action.payload
             state.user = action.payload.user
+        },
+        setSession: (state, action: PayloadAction<Session>) => {
+            state.session=action.payload
+        },
+        setLogoutUrl: (state, action: PayloadAction<string>) => {
+           state.logoutUrl=action.payload
         }
+
     },
     extraReducers: (builder: ActionReducerMapBuilder<UserState>) => {
 
@@ -222,7 +234,7 @@ export const UserSlice = createSlice({
 
     }
 })
-export const {setToken, clearUser} = UserSlice.actions
+export const {setToken, clearUser,setSession,setLogoutUrl} = UserSlice.actions
 export const getUser = createAsyncThunk(
     "auth/get",
     async ({id, token}: { id: number, token: string }) => {

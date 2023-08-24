@@ -9,7 +9,7 @@ import {useNavigate} from "react-router-dom";
 
 
 function Profile() {
-    const {user, token} = useAppSelector(({user: {user, token}}) => ({user, token}))
+    const {session, token} = useAppSelector(({user: {session, token}}) => ({session, token}))
     const [fullName, setFullName] = useState<string>('')
     const [phone, setPhone] = useState<string>()
     const [email, setEmail] = useState<string>('')
@@ -24,56 +24,18 @@ function Profile() {
     const navigate = useNavigate()
 
     useEffect(() => {
-        if(JSON.stringify(user)==='{}'){
+        if(!session)
             navigate('/login')
-        }
-        setFullName(user.fullName)
-        setPhone(user?.phone)
-        setEmail(user.email)
+        setEmail(session?.identity.traits.email)
     })
 
     function handleChangePassword(e: any) {
         e.preventDefault()
-        if (user && oldPassword !== '' && newPassword !== '' && confirmPassword !== '') {
-            if (newPassword === confirmPassword) {
-                let data: AuthUserUpdateDTO = {
-                    id: user?.id,
-                    fullName: null,
-                    email: null,
-                    phone: null,
-                    oldPassword,
-                    newPassword
-                }
-                dispatch(updateUser({token: token.accessToken, data}))
-                setError('')
-                setNew('')
-                setOld('')
-                setConfirm('')
-            } else {
-                e.target[1].classList.add('error')
-                e.target[2].classList.add('error')
-                setError('passwords not match')
-            }
-        } else {
-            setError('Inputs not empty')
-        }
+
     }
 
     function handleProfile(e: any) {
-        e.preventDefault()
-        if (user) {
-            if (fullName !== '' && email !== '' && phone) {
-                let data: AuthUserUpdateDTO = {
-                    id: user?.id,
-                    fullName,
-                    email,
-                    phone,
-                    oldPassword: null,
-                    newPassword: null
-                }
-                dispatch(updateUser({data, token: token.accessToken}))
-            }
-        }
+
     }
 
     return (

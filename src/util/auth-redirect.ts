@@ -1,4 +1,5 @@
-import { Config } from "../store/features/User";
+import {Config} from "../store/features/User";
+
 
 /**
  * @param endpoint Is one of: https://www.ory.sh/kratos/docs/reference/api/#public-endpoints

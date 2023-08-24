@@ -4,17 +4,18 @@ import {getAccessToken, LoginDTO, ory} from "../../store/features/User";
 import {toast} from "react-toastify";
 import {useAppDispatch} from "../../store/store";
 import {Link} from "react-router-dom";
-import {LoginFlow} from "@ory/kratos-client";
-import {redirectToSelfService} from "../../util";
+import {FlowMethodConfig} from "@ory/kratos-client";
 
 function Login() {
     const dispatch = useAppDispatch();
-    const [login, setLogin] = useState<LoginFlow>()
+    const [login, setLogin] = useState<FlowMethodConfig>()
     const [flow, setFlow] = useState<string>("")
     useEffect(() => {
-        ory.createNativeLoginFlow().then(res => {
-            console.log(res.data)
-        }).catch(() => redirectToSelfService("/self-service/login/browser"))
+        ory.createBrowserLoginFlow().then(res => {
+            if (res && res.status === 200) {
+                console.log(res.data)
+            }
+        }).catch(err => console.log(err))
     }, [])
 
     async function handleLogin(e: any) {
@@ -40,13 +41,15 @@ function Login() {
         }
     }
 
-    // if (!login) return null;
+    if (!login) return null;
     return (
         <div className="form-wrapper sign-in">
-            <form>
+            <form encType="application/x-www-form-urlencoded"
+                  action={login.action}
+                  method={login.method}>
                 <h2>Sign In</h2>
                 {/*<>{*/}
-                {/*    login?.ui?.nodes.map((field, index) =>*/}
+                {/*    login.fields.map((field, index) =>*/}
                 {/*        <AuthFormField key={index} field={field} index={index}/>*/}
                 {/*    )*/}
                 {/*}*/}
