@@ -50,7 +50,7 @@ selfservice:
             client_id: d6f79f63f410fd5b34875fad5a63eda48d4b46423055cf9e8e1e9a3e022b5e53
             client_secret: d34cd5c6e44099325e61480d448f26ea4bed571fa0a4dbd0d5ed18d957bc7618
             issuer_url: http://localhost:8080 # Replace this with the providers issuer URL
-            mapper_url: "base64:///etc/config/kratos/mapped.txt"
+            mapper_url: "base64:///etc/config/kratos/mapped.jsonnet"
             scope:
               - email
               - openid
