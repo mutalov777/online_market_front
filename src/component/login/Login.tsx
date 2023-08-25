@@ -1,36 +1,22 @@
 import React, {useEffect, useState} from "react";
 import './auth.scss'
-import {getAccessToken, LoginDTO, ory} from "../../store/features/User";
-import {toast} from "react-toastify";
-import {useAppDispatch} from "../../store/store";
+import {ory} from "../../store/features/User";
 import {Link} from "react-router-dom";
-import {FlowMethodConfig} from "@ory/kratos-client";
+import {CompleteSelfServiceLoginFlowWithPasswordMethod, FlowMethodConfig} from "@ory/kratos-client";
+import AuthFormField from "./AuthFormField";
+import {formatFormFields} from "../../util";
 
 function Login() {
-    const dispatch = useAppDispatch();
     const [login, setLogin] = useState<FlowMethodConfig>()
     const [flow, setFlow] = useState<string>("")
     useEffect(() => {
-        ory.createBrowserLoginFlow().then(res => {
+        ory.initializeSelfServiceLoginViaAPIFlow().then(res => {
             if (res && res.status === 200) {
-                console.log(res.data)
+                setFlow(res.data.id)
+                setLogin(formatFormFields(res.data, 'password'))
             }
         }).catch(err => console.log(err))
     }, [])
-
-    async function handleLogin(e: any) {
-        e.preventDefault()
-        let email = e.target[0].value
-        let password = e.target[1].value
-        const data: LoginDTO = {
-            email, password
-        }
-        if (email && password) {
-            dispatch(getAccessToken(data))
-        } else {
-            toast.error('Please fill all input field!')
-        }
-    }
 
     function openSignUpPage(even: any) {
         even.preventDefault()
@@ -41,19 +27,35 @@ function Login() {
         }
     }
 
+    async function submitLogin(e: any) {
+        e.preventDefault()
+        let identifier = e.target[0].value
+        let password = e.target[1].value
+        let csrf_token = e.target[2].defaultValue
+        const data: CompleteSelfServiceLoginFlowWithPasswordMethod = {
+            csrf_token,
+            password,
+            identifier
+        }
+        try{
+        ory.completeSelfServiceLoginFlowWithPasswordMethod(flow, data).then(res => {
+        })
+        }catch (e){
+            console.log(e);
+        }
+    }
+
     if (!login) return null;
     return (
         <div className="form-wrapper sign-in">
-            <form encType="application/x-www-form-urlencoded"
-                  action={login.action}
-                  method={login.method}>
+            <form onSubmit={submitLogin}>
                 <h2>Sign In</h2>
-                {/*<>{*/}
-                {/*    login.fields.map((field, index) =>*/}
-                {/*        <AuthFormField key={index} field={field} index={index}/>*/}
-                {/*    )*/}
-                {/*}*/}
-                {/*</>*/}
+                <>{
+                    login.fields.map((field, index) =>
+                        <AuthFormField key={index} field={field} index={index}/>
+                    )
+                }
+                </>
                 <div className="forgot-pass">
                     <a href="#">Forgot Password?</a>
                 </div>

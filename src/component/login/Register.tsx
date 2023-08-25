@@ -2,17 +2,20 @@ import React, {useEffect, useState} from "react";
 import {ory} from "../../store/features/User";
 import {useAppDispatch} from "../../store/store";
 import './auth.scss'
-import {FlowMethodConfig} from "@ory/kratos-client";
+import {FlowMethodConfig, FormField} from "@ory/kratos-client";
 import {Link} from "react-router-dom";
+import {formatFormFields} from "../../util";
+import AuthFormField from "./AuthFormField";
 
 function Register() {
     const [register, setRegister] = useState<FlowMethodConfig>()
     const [flow, setFlow] = useState<string>('')
     const dispatch = useAppDispatch();
     useEffect(() => {
-        ory.createBrowserRegistrationFlow().then(res => {
-            window.location.replace(res.data.ui.action)
-            console.log();
+        ory.initializeSelfServiceRegistrationViaAPIFlow().then(res => {
+            if (res && res.status === 200)
+                setFlow(res.data.id)
+            setRegister(formatFormFields(res.data, 'password'))
         }).catch(err => {
             console.log(err)
         })
@@ -55,11 +58,11 @@ function Register() {
                   action={register.action}
                   method={register.method}>
                 <h2>Sign Up</h2>
-                {/*<>{*/}
-                {/*    register?.fields.map((field: FormField, index: number) =>*/}
-                {/*        <AuthFormField key={index} field={field} index={index}/>*/}
-                {/*    )*/}
-                {/*}</>*/}
+                <>{
+                    register?.fields.map((field: FormField, index: number) =>
+                            <AuthFormField key={index} field={field} index={index}/>
+                    )
+                }</>
                 <button type={'submit'} className={'login-btn'}>Sign Up</button>
                 <div className="sign-link">
                     <p>

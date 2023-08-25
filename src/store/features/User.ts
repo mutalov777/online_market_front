@@ -4,16 +4,16 @@ import {axiosInstance as axios, BaseURL} from "../store";
 import {toast} from "react-toastify";
 import {MessageShortDTO} from "./Message";
 
-import {Configuration, FrontendApi} from "@ory/kratos-client";
+import {Configuration, PublicApi} from "@ory/kratos-client";
 import {Session} from "@ory/kratos-client";
 
 export const Config = {
     auth: {
         publicURL:
-            process.env.REACT_APP_KRATOS_PUBLIC_URL || "http://localhost:4000/.ory"
+            process.env.REACT_APP_KRATOS_PUBLIC_URL || "http://127.0.0.1:4433"
     }
 };
-export const ory = new FrontendApi(
+export const ory = new PublicApi(
     new Configuration({
         basePath: Config.auth.publicURL,
         baseOptions: {

@@ -26,7 +26,6 @@ function Profile() {
     useEffect(() => {
         if(!session)
             navigate('/login')
-        setEmail(session?.identity.traits.email)
     })
 
     function handleChangePassword(e: any) {

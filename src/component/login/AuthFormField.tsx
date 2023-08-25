@@ -1,21 +1,22 @@
 import React from "react";
 import AuthFormFieldMessage from "./AuthFormFieldMessage";
-import {UiNode} from "@ory/kratos-client";
+import {FormField} from "@ory/kratos-client";
+import {getFormFieldTitle} from "../../util";
 
-function AuthFormField({node, index}: { node: UiNode, index: number }) {
+function AuthFormField({field, index}: { field: FormField, index: number }) {
     return (
         <div key={index} className="input-group">
-            {/*<input  // @ts-ignore*/}
-            {/*    defaultValue={node.value}*/}
-            {/*    id={node.name + index}*/}
-            {/*    name={node.type}*/}
-            {/*    pattern={node.pattern}*/}
-            {/*    required={node.required}*/}
-            {/*    type={node.type}*/}
-            {/*/>*/}
-            {/*<label htmlFor={node.name + index}*/}
-            {/*       hidden={node.type === 'hidden'}>{getFormFieldTitle(node)}</label>*/}
-            {/*<AuthFormFieldMessage messages={node.messages}/>*/}
+            <input
+                defaultValue={field.value?.toString()}
+                id={field.name + index}
+                name={field.name}
+                pattern={field.pattern}
+                required={field.required}
+                type={field.type}
+            />
+            <label htmlFor={field.name + index}
+                   hidden={field.type === 'hidden'}>{getFormFieldTitle(field)}</label>
+            <AuthFormFieldMessage messages={field.messages}/>
         </div>
     )
 }

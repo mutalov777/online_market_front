@@ -15,7 +15,7 @@ serve:
     # Kratos uses cookies so you must always connect from "127.0.0.1"
     base_url: http://127.0.0.1:4433/
     cors:
-      enabled: false
+      enabled: true
       allowed_origins:
         - http://127.0.0.1:3000
       allowed_methods:

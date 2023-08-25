@@ -21,19 +21,6 @@ function Menu() {
     const [dropdownOpen, setDropdownOpen] = useState(false);
     const [language, setLanguage] = useState('uz');
     const {t, i18n} = useTranslation()
-
-    useEffect(() => {
-            ory.toSession().then(({data}) => {
-                dispatch(setSession(data))
-                ory.createBrowserLogoutFlow().then(({data}) => {
-                    dispatch(setLogoutUrl(data.logout_url))
-                })
-            }).catch(err => {
-                toast.error(err)
-            })
-        }
-        , [])
-
     function toggle() {
         setDropdownOpen(!dropdownOpen)
     }
@@ -56,8 +43,6 @@ function Menu() {
         redirectToSelfService('/ui/registration')
     }
 
-    const getUserName = (identity: Identity) =>
-        identity.traits.email || identity.traits.username
 
     return (
         <nav className={'menu'}>
@@ -87,7 +72,7 @@ function Menu() {
                                         <div>
                                             <FaUserAlt/>
                                         </div>
-                                        {getUserName(session.identity)}
+                                        <>{session.identity}</>
                                     </DropdownToggle>
                                     <DropdownMenu className={'account-dropdown-menu'}>
                                         <DropdownItem className={'account-dropdown-item'}>
