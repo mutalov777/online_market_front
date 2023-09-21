@@ -1,18 +1,15 @@
 import React, {useEffect, useState} from "react";
 import {ory} from "../../store/features/User";
-import {useAppDispatch} from "../../store/store";
 import './auth.scss'
-import {FlowMethodConfig} from "@ory/kratos-client";
+import {RegistrationFlow, UiNode} from "@ory/kratos-client";
 import {Link} from "react-router-dom";
+import AuthFormField from "./AuthFormField";
 
 function Register() {
-    const [register, setRegister] = useState<FlowMethodConfig>()
-    const [flow, setFlow] = useState<string>('')
-    const dispatch = useAppDispatch();
+    const [register, setRegister] = useState<RegistrationFlow>()
     useEffect(() => {
         ory.createBrowserRegistrationFlow().then(res => {
-            window.location.replace(res.data.ui.action)
-            console.log();
+            setRegister(res.data)
         }).catch(err => {
             console.log(err)
         })
@@ -52,15 +49,14 @@ function Register() {
     return (
         <div className="form-wrapper sign-up">
             <form encType="application/x-www-form-urlencoded"
-                  action={register.action}
-                  method={register.method}>
+                  action={register.ui.action}
+                  method={register.ui.method}>
                 <h2>Sign Up</h2>
-                {/*<>{*/}
-                {/*    register?.fields.map((field: FormField, index: number) =>*/}
-                {/*        <AuthFormField key={index} field={field} index={index}/>*/}
-                {/*    )*/}
-                {/*}</>*/}
-                <button type={'submit'} className={'login-btn'}>Sign Up</button>
+                <>{
+                    register.ui.nodes.map((field: UiNode, index: number) =>
+                        <AuthFormField key={index} node={field} index={index}/>
+                    )
+                }</>
                 <div className="sign-link">
                     <p>
                         Already have an account?

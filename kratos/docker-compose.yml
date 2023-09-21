@@ -8,7 +8,7 @@ services:
   ## Initialize Kratos storage; populate SQLite database.
   kratos-migrate:
     container_name: kratos-migrate
-    image: oryd/kratos:v0.5.5-alpha.1-sqlite
+    image: oryd/kratos:v1.0.0
     environment:
       - DSN=postgres://kratos:secret@postgresd:5432/kratos?sslmode=disable&max_conns=20&max_idle_conns=4
     volumes:
@@ -29,7 +29,7 @@ services:
     container_name: kratos
     depends_on:
       - kratos-migrate
-    image: oryd/kratos:v0.5.5-alpha.1-sqlite
+    image: oryd/kratos:v1.0.0
     ports:
       - "4433:4433" # Public Endpoints https://www.ory.sh/kratos/docs/reference/api#public-endpoints
       - "4434:4434" # Administrative Endpoints https://www.ory.sh/kratos/docs/reference/api#administrative-endpoints

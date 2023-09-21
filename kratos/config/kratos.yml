@@ -4,7 +4,7 @@
 # Reference: https://www.ory.sh/kratos/docs/reference/configuration
 
 # Updated from v0.4.6-alpha.1
-version: v0.5.5-alpha.1
+version: v1.0.0
 
 # Notice how the ENV-Variable defined in ../docker-compose.yml will overwrite whats expressed here.
 # This is true for *every* configuration value.
@@ -15,7 +15,7 @@ serve:
     # Kratos uses cookies so you must always connect from "127.0.0.1"
     base_url: http://127.0.0.1:4433/
     cors:
-      enabled: false
+      enabled: true
       allowed_origins:
         - http://127.0.0.1:3000
       allowed_methods:
@@ -50,7 +50,7 @@ selfservice:
             client_id: d6f79f63f410fd5b34875fad5a63eda48d4b46423055cf9e8e1e9a3e022b5e53
             client_secret: d34cd5c6e44099325e61480d448f26ea4bed571fa0a4dbd0d5ed18d957bc7618
             issuer_url: http://localhost:8080 # Replace this with the providers issuer URL
-            mapper_url: "base64:///etc/config/kratos/mapped.txt"
+            mapper_url: "base64://bG9jYWwgY2xhaW1zID0gew0KICBlbWFpbF92ZXJpZmllZDogZmFsc2UsDQp9ICsgc3RkLmV4dFZhcignY2xhaW1zJyk7DQp7DQogIGlkZW50aXR5OiB7DQogICAgdHJhaXRzOiB7DQogICAgICAvLyBBbGxvd2luZyB1bnZlcmlmaWVkIGVtYWlsIGFkZHJlc3NlcyBlbmFibGVzIGFjY291bnQNCiAgICAgIC8vIGVudW1lcmF0aW9uIGF0dGFja3MsICBpZiB0aGUgdmFsdWUgaXMgdXNlZCBmb3INCiAgICAgIC8vIHZlcmlmaWNhdGlvbiBvciBhcyBhIHBhc3N3b3JkIGxvZ2luIGlkZW50aWZpZXIuDQogICAgICAvLw0KICAgICAgLy8gVGhlcmVmb3JlIHdlIG9ubHkgcmV0dXJuIHRoZSBlbWFpbCBpZiBpdCAoYSkgZXhpc3RzIGFuZCAoYikgaXMgbWFya2VkIHZlcmlmaWVkDQogICAgICAvLyBieSBHaXRMYWIuDQogICAgICBbaWYgJ2VtYWlsJyBpbiBjbGFpbXMgJiYgY2xhaW1zLmVtYWlsX3ZlcmlmaWVkIHRoZW4gJ2VtYWlsJyBlbHNlIG51bGxdOiBjbGFpbXMuZW1haWwsDQogICAgfSwNCiAgfSwNCn0="
             scope:
               - email
               - openid
@@ -58,11 +58,6 @@ selfservice:
               - read_user
       enabled: true
   default_browser_return_url: http://127.0.0.1:3000/
-
-  whitelisted_return_urls:
-    - http://127.0.0.1:3000/
-
-
   # These `ui_url` values are entirely dependant upon your setup.
   # For this example, the React-app runs in development mode on the default port of 3000.
   # You can see how this would change for a production environment or other solutions.

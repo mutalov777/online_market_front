@@ -3,7 +3,7 @@ services:
   web:
     image: 'gitlab/gitlab-ce:latest'
     restart: always
-    hostname: 'localhost'
+    hostname: '127.0.0.1'
     container_name: gitlab-ce
     environment:
       GITLAB_OMNIBUS_CONFIG: |
@@ -16,7 +16,7 @@ services:
       - '$GITLAB_HOME/logs:/var/log/gitlab'
       - '$GITLAB_HOME/data:/var/opt/gitlab'
     networks:
-      - gitlab
+      - intranet
   gitlab-runner:
     image: gitlab/gitlab-runner:alpine
     container_name: gitlab-runner
@@ -27,8 +27,7 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
       - '$GITLAB_HOME/gitlab-runner:/etc/gitlab-runner'
     networks:
-      - gitlab
+      - intranet
 
 networks:
-  gitlab:
-    name: gitlab-network
+  intranet:

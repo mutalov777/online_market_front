@@ -49,13 +49,6 @@ function Menu() {
         setLanguage(lan)
         i18n.changeLanguage(lan).then(r => r)
     }
-    function loginUrl(){
-        redirectToSelfService("/ui/login")
-    }
-    function register(){
-        redirectToSelfService('/ui/registration')
-    }
-
     const getUserName = (identity: Identity) =>
         identity.traits.email || identity.traits.username
 
@@ -79,8 +72,7 @@ function Menu() {
                         </div>
                         <div className="account">
                             {(!session) ? <>
-                                    <button onClick={loginUrl}>Sign In</button>
-                                    <button onClick={register}>Sign Out</button>
+                                    <Link className={'login'} to={"auth"}>Sign In | Sign Out</Link>
                                 </>:
                                 <Dropdown className={'account-dropdown'} isOpen={dropdownOpen} toggle={toggle}>
                                     <DropdownToggle className={'account-dropdown-toggle'} caret>

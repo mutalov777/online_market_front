@@ -6,11 +6,12 @@ import {MessageShortDTO} from "./Message";
 
 import {Configuration, FrontendApi} from "@ory/kratos-client";
 import {Session} from "@ory/kratos-client";
+import Login from "../../component/login/Login";
 
 export const Config = {
     auth: {
         publicURL:
-            process.env.REACT_APP_KRATOS_PUBLIC_URL || "http://localhost:4000/.ory"
+            process.env.REACT_APP_KRATOS_PUBLIC_URL || "http://localhost:4433"
     }
 };
 export const ory = new FrontendApi(
@@ -54,8 +55,9 @@ export interface UserCreateDTO {
 }
 
 export interface LoginDTO {
-    email: string,
-    password: string
+    identifier: string,
+    password: string,
+    csrf_token:string
 }
 
 export interface SessionDTO {
@@ -441,6 +443,24 @@ export const getOnlineUsers = createAsyncThunk(
                 headers: {
                     "Authorization": "Bearer " + token
                 }
+            }
+        )
+        if (response.status === 200) {
+            return response.data;
+        }
+    }
+)
+
+export const login = createAsyncThunk(
+    "auth/login",
+    async ({url,data}:{url:string, data:LoginDTO}) => {
+        const response = await axios({
+                url,
+                method: 'post',
+                headers: {
+                    "Content-Type": "application/x-www-form-urlencoded "
+                },
+                data
             }
         )
         if (response.status === 200) {
